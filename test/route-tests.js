@@ -63,3 +63,15 @@ describe('enemies route', function () {
   });
 
 });
+
+describe('enemy id route', function () {
+  it('should return an enemy by id', function () {
+    request(app)
+      .get('/api/vi/enemies/372921')
+      .end(function(error, result) {
+        result.should.have.status(200);
+        result.should.be.a('array');
+        done();
+      });
+  });
+});
