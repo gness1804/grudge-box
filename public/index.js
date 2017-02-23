@@ -31,7 +31,7 @@ const getEnemies = () => {
 }
 
 const sortEnemiesByName = () => {
-  
+
 }
 
 const postNewEnemyToServer = (name, offense, date) => {

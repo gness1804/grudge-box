@@ -24,7 +24,8 @@
     "no-unused-vars": "off",
     "no-else-return": "warn",
     "func-names": "off",
-    "no-unused-expressions": "warn"
+    "no-unused-expressions": "warn",
+    "prefer-const": "warn"
   },
   "parser": "babel-eslint"
 }
