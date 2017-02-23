@@ -1,5 +1,4 @@
 const displayTotalEnemiesCount = (enemies) => {
-
   enemies.length ? totalEnemiesCount.text(`You have ${enemies.length} foes. What jerks!`) : totalEnemiesCount.text('You don\'t have any enemies! You should celebrate.')
 }
 
