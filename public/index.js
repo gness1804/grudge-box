@@ -49,9 +49,9 @@ const sortEnemiesByName = () => {
 
 const sortEnemiesByDate = () => {
   clearEnemyList()
-  // const sortedEnemies = enemiesStore.sort((a, b) => {
-  //   return a.id - b.id
-  // })
+  const sortedEnemies = enemiesStore.sort((a, b) => {
+    return b.rawDateOfOffense - a.rawDateOfOffense
+  })
   appendEnemiesToDOM(sortedEnemies)
   addEnemiesToClientStore(sortedEnemies)
 }
