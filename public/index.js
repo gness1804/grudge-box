@@ -40,6 +40,7 @@ const showOnlyOneEnemy = () => {
 const showEnemies = () => {
   enemyListDisplay.show()
   enemyDetailSection.hide()
+  getEnemies()
 }
 
 const putEnemyOnPage = (data) => {
@@ -51,13 +52,15 @@ const putEnemyOnPage = (data) => {
       <h2>Enemy:</h2>
       <h3>Name: ${enemy.name}</h3>
       <p>Offense: ${enemy.offense}</p>
-      <p>Is this enemy forgiven?</p>
+      <p>Is this enemy forgiven? Currently: ${enemy.forgiven}</p>
+      <p>Desired forgiveness status:</p>
       <select id="enemy-forgiven-dropdown">
+        <option selected>Choose One!</option>
         <option value="true">True</option>
-        <option selected value="false">False</option>
+        <option value="false">False</option>
       </select>
       <button onClick="saveEnemyData('${enemy.id}')">Save the Loser's Details</button>
-      <button onClick="showEnemies()">Close without Saving</button>
+      <button onClick="showEnemies()">Close</button>
     </div>
   `)
 }
