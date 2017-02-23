@@ -4,12 +4,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" style="text/css" href="styles.css"/>
     <link rel="stylesheet" style="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css"/>
+    <link rel="stylesheet" style="text/css" href="styles.css"/>
     <title>Grudge Box</title>
   </head>
   <body>
     <h1>Grudge Box</h1>
+    <img
+      src="http://www.digital-polyphony.com/Capture7.JPG"
+      alt="John Candy as the devil."
+      id="john-candy-devil"
+    />
+
+    <section class="enemy-entry-section">
+      <input
+        placeholder="Enemy's Name"
+        id="enemy-name-input"
+        type="text"
+      />
+      <input
+        placeholder="How Did They Screw You Over?"
+        id="enemy-offense-input"
+        type="text"
+      />
+      <p>Is this enemy forgiven?</p>
+      <select id="enemy-forgiven-dropdown">
+        <option selected value="true">True</option>
+        <option value="false">False</option>
+      </select>
+      <input
+        placeholder="When Did They Screw You Over?"
+        id="enemy-date-input"
+        type="date"
+      />
+    </section>
 
    <script src="index.js"></script>
   </body>

@@ -1,0 +1,14 @@
+body {
+  text-align: center;
+}
+
+#john-candy-devil {
+  width: 300px;
+  height: 300px;
+  margin: 30px auto;
+}
+
+input {
+  display: block;
+  margin: 20px auto;
+}
