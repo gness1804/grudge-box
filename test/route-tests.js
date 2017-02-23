@@ -53,4 +53,13 @@ describe('enemies route', function () {
       });
   });
 
+  it('should have an initial length of 1', function () {
+    request(app)
+      .get('/api/vi/enemies')
+      .end(function(error, result) {
+        assert.strictEqual(result.length, 1);
+        done();
+      });
+  });
+
 });
