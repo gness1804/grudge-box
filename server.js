@@ -49,6 +49,10 @@ app.patch('/api/vi/enemies/:id', (request, response) => {
     return enemy.id === parseInt(id, 10)
   })
   Object.assign(target[0], { forgiven })
+  app.locals.enemies = app.locals.enemies.filter((enemy) => {
+      return enemy.id !== parseInt(id, 10)
+    })
+    app.locals.enemies.push(target[0])
 });
 
 app.listen(app.get('port'), () => {
