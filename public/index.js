@@ -4,6 +4,7 @@ const enemyDateInput = $('#enemy-date-input')
 const addEnemyButton = $('#add-enemy-button')
 const enemyListDisplay = $('.enemy-list-display')
 const enemyListUpdateButton = $('#enemy-list-update-button')
+const userErrorWarning = $('#user-error-warning')
 
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();
@@ -34,7 +35,8 @@ addEnemyButton.on('click', () => {
   const offense = enemyOffenseInput.val()
   const date = enemyDateInput.val()
   if (!dataIsValid(name, offense, date)) {
-    throw new Error('You must enter in valid info for all entry fields.')
+    userErrorWarning.text('Error: you must enter in valid data in all fields.')
+    return
   }
   axios.post('/api/vi/enemies', {
     id: Date.now(),

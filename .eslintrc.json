@@ -22,7 +22,8 @@
     "semi": "off",
     "no-undef": "off",
     "no-unused-vars": "off",
-    "no-else-return": "warn"
+    "no-else-return": "warn",
+    "func-names": "off"
   },
   "parser": "babel-eslint"
 }
