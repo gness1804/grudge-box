@@ -23,7 +23,8 @@
     "no-undef": "off",
     "no-unused-vars": "off",
     "no-else-return": "warn",
-    "func-names": "off"
+    "func-names": "off",
+    "no-unused-expressions": "warn"
   },
   "parser": "babel-eslint"
 }

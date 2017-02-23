@@ -8,6 +8,7 @@ const userErrorWarning = $('#user-error-warning')
 const enemyCountsDisplay = $('.enemy-counts-display')
 const totalEnemiesCount = $('#total-enemies-count')
 const totalUnforgivenCount = $('#total-unforgiven-count')
+const totalForgivenCount = $('#total-forgiven-count')
 
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();
