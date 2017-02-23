@@ -45,6 +45,7 @@ const showEnemies = () => {
 const putEnemyOnPage = (data) => {
   const enemy = data[0]
   showOnlyOneEnemy()
+  enemyDetailSection.html('')
   enemyDetailSection.append(`
     <div>
       <h2>Enemy:</h2>
