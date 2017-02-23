@@ -22,6 +22,16 @@ const getEnemies = () => {
   }
 }
 
+const postNewEnemyToServer = (name, offense, date) => {
+  axios.post('/api/vi/enemies', {
+    id: Date.now(),
+    name,
+    offense,
+    date,
+    forgiven: false,
+  })
+}
+
 const dataIsValid = (name, offense, date) => {
   if (typeof name === 'string' && typeof offense === 'string' && typeof date === 'string' && name && offense && date) {
     return true
@@ -38,13 +48,7 @@ addEnemyButton.on('click', () => {
     userErrorWarning.text('Error: you must enter in valid data in all fields.')
     return
   }
-  axios.post('/api/vi/enemies', {
-    id: Date.now(),
-    name,
-    offense,
-    date,
-    forgiven: false,
-  })
+  postNewEnemyToServer(name, offense, date)
   clearInputFields()
 })
 
