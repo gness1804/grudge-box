@@ -20,7 +20,8 @@
     "jsx-a11y/no-static-element-interactions": "off",
 		"react/jsx-no-bind": "off",
     "semi": "off",
-    "no-undef": "warn",
+    "no-undef": "off",
+    "no-unused-vars": "off",
     "no-else-return": "warn"
   },
   "parser": "babel-eslint"

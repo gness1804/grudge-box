@@ -5,17 +5,6 @@ const addEnemyButton = $('#add-enemy-button')
 const enemyListDisplay = $('.enemy-list-display')
 const enemyListUpdateButton = $('#enemy-list-update-button')
 
-const putEnemiesOnPage = (enemies) => {
-  enemyListDisplay.html('')
-  enemies.forEach((enemy) => {
-    enemyListDisplay.append(`
-      <div>
-        <h2 onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h2>
-      </div>
-      `)
-  });
-}
-
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();
   hitAPI.open('GET', '/api/vi/enemies', true);
@@ -54,7 +43,7 @@ addEnemyButton.on('click', () => {
     date,
     forgiven: false,
   })
-  getEnemies()
+  clearInputFields()
 })
 
 getEnemies()
