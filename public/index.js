@@ -11,6 +11,7 @@ const totalUnforgivenCount = $('#total-unforgiven-count')
 const totalForgivenCount = $('#total-forgiven-count')
 const sortEnemiesByNameButton = $('#enemy-sort-name-button')
 const sortEnemiesByDateButton = $('#enemy-sort-date-button')
+const enemyDetailSection = $('.enemy-detail-section')
 
 let enemiesStore = []
 
@@ -31,7 +32,15 @@ const getEnemies = () => {
 }
 
 const putEnemyOnPage = (data) => {
-
+  const enemy = data[0]
+  enemyListDisplay.hide()
+  enemyDetailSection.append(`
+    <div>
+      <h2>Enemy:</h2>
+      <h2>Name: ${enemy.name}</h2>
+      <p>Offense: ${enemy.offense}</p>
+    </div>
+  `)
 }
 
 const goToEnemyDetail = (id) => {
@@ -41,7 +50,7 @@ const goToEnemyDetail = (id) => {
   hitAPI.onreadystatechange = function () {
     if (hitAPI.readyState === XMLHttpRequest.DONE) {
       if (hitAPI.status === 200) {
-        putEnemyOnPage(hitAPI.responseText)
+        putEnemyOnPage(JSON.parse(hitAPI.responseText))
       } else {
         throw new Error('There was a problem with the API call.');
       }
@@ -108,6 +117,7 @@ addEnemyButton.on('click', (e) => {
 })
 
 getEnemies()
+enemyListDisplay.show()
 
 enemyListUpdateButton.on('click', (e) => {
   e.preventDefault()
