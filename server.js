@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 const bodyParser = require('body-parser');
-// const path = require('path');
+const path = require('path');
 // const http = require('http');
 
 app.use(express.static('public'));
@@ -15,7 +15,7 @@ app.set('port', process.env.PORT || 3000);
 app.locals.title = ''
 
 app.get('/', (request, response) => {
-  response.send('I am serving data.');
+  response.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(app.get('port'), () => {
