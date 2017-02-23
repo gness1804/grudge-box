@@ -12,6 +12,7 @@ body {
 input {
   display: block;
   margin: 20px auto;
+  width: 50vw;
 }
 
 #user-error-warning {
