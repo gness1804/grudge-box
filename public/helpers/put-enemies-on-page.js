@@ -7,10 +7,11 @@ const clearEnemyList = () => {
 }
 
 const appendEnemiesToDOM = (enemies) => {
+  enemyListDisplay.append('<h2>Enemies:</h2>')
   enemies.forEach((enemy) => {
     enemyListDisplay.append(`
       <div>
-        <h2 onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h2>
+        <h3 onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h3>
       </div>
       `)
   });

@@ -31,14 +31,31 @@ const getEnemies = () => {
   }
 }
 
+const showOnlyOneEnemy = () => {
+  enemyListDisplay.hide()
+  enemyDetailSection.show()
+}
+
+const showEnemies = () => {
+  enemyListDisplay.show()
+  enemyDetailSection.hide()
+}
+
 const putEnemyOnPage = (data) => {
   const enemy = data[0]
-  enemyListDisplay.hide()
+  showOnlyOneEnemy()
   enemyDetailSection.append(`
     <div>
       <h2>Enemy:</h2>
-      <h2>Name: ${enemy.name}</h2>
+      <h3>Name: ${enemy.name}</h3>
       <p>Offense: ${enemy.offense}</p>
+      <p>Is this enemy forgiven?</p>
+      <select id="enemy-forgiven-dropdown">
+        <option value="true">True</option>
+        <option selected value="false">False</option>
+      </select>
+      <button>Save the Loser's Details</button>
+      <button onClick="showEnemies()">Close without Saving</button>
     </div>
   `)
 }
@@ -117,7 +134,7 @@ addEnemyButton.on('click', (e) => {
 })
 
 getEnemies()
-enemyListDisplay.show()
+showEnemies()
 
 enemyListUpdateButton.on('click', (e) => {
   e.preventDefault()
