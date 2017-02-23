@@ -7,6 +7,7 @@ const enemyListUpdateButton = $('#enemy-list-update-button')
 const userErrorWarning = $('#user-error-warning')
 const enemyCountsDisplay = $('.enemy-counts-display')
 const totalEnemiesCount = $('#total-enemies-count')
+const totalUnforgivenCount = $('#total-unforgiven-count')
 
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();
