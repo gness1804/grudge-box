@@ -47,6 +47,15 @@ const sortEnemiesByName = () => {
   addEnemiesToClientStore(sortedEnemies)
 }
 
+const sortEnemiesByDate = () => {
+  clearEnemyList()
+  // const sortedEnemies = enemiesStore.sort((a, b) => {
+  //   return a.id - b.id
+  // })
+  appendEnemiesToDOM(sortedEnemies)
+  addEnemiesToClientStore(sortedEnemies)
+}
+
 const postNewEnemyToServer = (name, offense, date) => {
   axios.post('/api/vi/enemies', {
     id: Date.now(),
@@ -88,4 +97,9 @@ enemyListUpdateButton.on('click', (e) => {
 sortEnemiesByNameButton.on('click', (e) => {
   e.preventDefault()
   sortEnemiesByName()
+});
+
+sortEnemiesByDateButton.on('click', (e) => {
+  e.preventDefault()
+  sortEnemiesByDate()
 });

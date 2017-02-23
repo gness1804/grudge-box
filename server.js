@@ -1,4 +1,5 @@
 const express = require('express');
+const moment = require('moment')
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -20,6 +21,7 @@ app.locals.enemies = [
     name: 'The Grinch',
     offense: 'Stealing Christmas',
     date: '12/25/2016',
+    rawDateOfOffense: new Date('12/25/2016').getTime(),
     forgiven: false,
   },
 ]
@@ -37,6 +39,9 @@ app.listen(app.get('port'), () => {
 });
 
 app.post('/api/vi/enemies', (request) => {
-  const enemyInfo = request.body
+  const enemyInfo = Object.assign(request.body,
+    {
+      rawDateOfOffense: new Date(request.body.date).getTime(),
+    })
   app.locals.enemies.push(enemyInfo)
 });
