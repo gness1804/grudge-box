@@ -14,6 +14,7 @@ const sortEnemiesByDateButton = $('#enemy-sort-date-button')
 const enemyDetailSection = $('.enemy-detail-section')
 
 let enemiesStore = []
+let isTargetForgiven = false
 
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();
@@ -54,10 +55,20 @@ const putEnemyOnPage = (data) => {
         <option value="true">True</option>
         <option selected value="false">False</option>
       </select>
-      <button>Save the Loser's Details</button>
+      <button onClick="saveEnemyData('${enemy.id}')">Save the Loser's Details</button>
       <button onClick="showEnemies()">Close without Saving</button>
     </div>
   `)
+}
+
+enemyDetailSection.on('change', '#enemy-forgiven-dropdown', (e) => {
+  isTargetForgiven = e.target.value
+});
+
+const saveEnemyData = (id) => {
+  axios.patch(`/api/vi/enemies/${id}`, {
+    forgiven: isTargetForgiven,
+  })
 }
 
 const goToEnemyDetail = (id) => {

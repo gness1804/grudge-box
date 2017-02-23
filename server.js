@@ -42,6 +42,15 @@ app.get('/api/vi/enemies/:id', (request, response) => {
   response.send(target);
 });
 
+app.patch('/api/vi/enemies/:id', (request, response) => {
+  const { forgiven } = request.body
+  const { id } = request.params;
+  const target = app.locals.enemies.filter((enemy) => {
+    return enemy.id === parseInt(id, 10)
+  })
+  Object.assign(target[0], { forgiven })
+});
+
 app.listen(app.get('port'), () => {
   console.log('The server is listening on port 3000.'); // eslint-disable-line
 });
