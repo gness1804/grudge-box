@@ -11,8 +11,10 @@ const totalUnforgivenCount = $('#total-unforgiven-count')
 const totalForgivenCount = $('#total-forgiven-count')
 const sortEnemiesByNameButton = $('#enemy-sort-name-button')
 const sortEnemiesByDateButton = $('#enemy-sort-date-button')
+const enemyDetailSection = $('.enemy-detail-section')
 
 let enemiesStore = []
+let isTargetForgiven = false
 
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();
@@ -24,7 +26,65 @@ const getEnemies = () => {
         const result = JSON.parse(hitAPI.responseText)
         putEnemiesOnPage(result)
       } else {
-        console.error('There was a problem with the API call.'); // eslint-disable-line
+        throw new Error('There was a problem with the API call.')
+      }
+    }
+  }
+}
+
+const showOnlyOneEnemy = () => {
+  enemyListDisplay.hide()
+  enemyDetailSection.show()
+}
+
+const showEnemies = () => {
+  enemyListDisplay.show()
+  enemyDetailSection.hide()
+  getEnemies()
+}
+
+const putEnemyOnPage = (data) => {
+  const enemy = data[0]
+  showOnlyOneEnemy()
+  enemyDetailSection.html('')
+  enemyDetailSection.append(`
+    <div>
+      <h2>Enemy:</h2>
+      <h3>Name: ${enemy.name}</h3>
+      <p>Offense: ${enemy.offense}</p>
+      <p>Is this enemy forgiven? Currently: ${enemy.forgiven}</p>
+      <p>Desired forgiveness status:</p>
+      <select id="enemy-forgiven-dropdown">
+        <option selected>Choose One!</option>
+        <option value="true">True</option>
+        <option value="false">False</option>
+      </select>
+      <button onClick="saveEnemyData('${enemy.id}')">Save the Loser's Details</button>
+      <button onClick="showEnemies()">Close</button>
+    </div>
+  `)
+}
+
+enemyDetailSection.on('change', '#enemy-forgiven-dropdown', (e) => {
+  isTargetForgiven = e.target.value
+});
+
+const saveEnemyData = (id) => {
+  axios.patch(`/api/vi/enemies/${id}`, {
+    forgiven: isTargetForgiven,
+  })
+}
+
+const goToEnemyDetail = (id) => {
+  const hitAPI = new XMLHttpRequest();
+  hitAPI.open('GET', `/api/vi/enemies/${id}`, true);
+  hitAPI.send();
+  hitAPI.onreadystatechange = function () {
+    if (hitAPI.readyState === XMLHttpRequest.DONE) {
+      if (hitAPI.status === 200) {
+        putEnemyOnPage(JSON.parse(hitAPI.responseText))
+      } else {
+        throw new Error('There was a problem with the API call.');
       }
     }
   }
@@ -85,9 +145,11 @@ addEnemyButton.on('click', (e) => {
   }
   postNewEnemyToServer(name, offense, date)
   clearInputFields()
+  userErrorWarning.text('')
 })
 
 getEnemies()
+showEnemies()
 
 enemyListUpdateButton.on('click', (e) => {
   e.preventDefault()
