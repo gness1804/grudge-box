@@ -1,3 +1,23 @@
+const displayTotalEnemiesCount = (enemies) => {
+  enemies.length ? totalEnemiesCount.text(`You have ${enemies.length} foes. What jerks!`) : totalEnemiesCount.text('You don\'t have any enemies! You should celebrate.')
+}
+
+const displayCountOfUnforgiven = (enemies) => {
+  const count = enemies.filter((enemy) => {
+    return enemy.forgiven === false
+  })
+
+  count.length ? totalUnforgivenCount.text(`There are still ${count.length} enemies who need to beg for your forgiveness.`) : totalUnforgivenCount.text('Woohoo! No unforgiven enemies!')
+}
+
+const displayCountOfForgiven = (enemies) => {
+  const count = enemies.filter((enemy) => {
+    return enemy.forgiven === true
+  })
+
+  count.length ? totalForgivenCount.text(`You have forgiven ${count.length} enemies. Good on you!`) : totalForgivenCount.text('All of your enemies remain unforgiven. What a crappy place to be!')
+}
+
 const putEnemiesOnPage = (enemies) => {
   enemyListDisplay.html('')
   enemies.forEach((enemy) => {
@@ -7,4 +27,7 @@ const putEnemiesOnPage = (enemies) => {
       </div>
       `)
   });
+  displayTotalEnemiesCount(enemies)
+  displayCountOfUnforgiven(enemies)
+  displayCountOfForgiven(enemies)
 }
