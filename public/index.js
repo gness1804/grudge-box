@@ -5,6 +5,8 @@ const addEnemyButton = $('#add-enemy-button')
 const enemyListDisplay = $('.enemy-list-display')
 const enemyListUpdateButton = $('#enemy-list-update-button')
 const userErrorWarning = $('#user-error-warning')
+const enemyCountsDisplay = $('.enemy-counts-display')
+const totalEnemiesCount = $('#total-enemies-count')
 
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();

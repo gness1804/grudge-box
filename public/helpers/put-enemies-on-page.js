@@ -7,4 +7,5 @@ const putEnemiesOnPage = (enemies) => {
       </div>
       `)
   });
+  totalEnemiesCount.text(`You have ${enemies.length} foe(s). What jerks!` || 'You don\'t have any enemies! You should celebrate.')
 }
