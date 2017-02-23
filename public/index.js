@@ -24,7 +24,26 @@ const getEnemies = () => {
         const result = JSON.parse(hitAPI.responseText)
         putEnemiesOnPage(result)
       } else {
-        console.error('There was a problem with the API call.'); // eslint-disable-line
+        throw new Error('There was a problem with the API call.')
+      }
+    }
+  }
+}
+
+const putEnemyOnPage = (data) => {
+
+}
+
+const goToEnemyDetail = (id) => {
+  const hitAPI = new XMLHttpRequest();
+  hitAPI.open('GET', `/api/vi/enemies/${id}`, true);
+  hitAPI.send();
+  hitAPI.onreadystatechange = function () {
+    if (hitAPI.readyState === XMLHttpRequest.DONE) {
+      if (hitAPI.status === 200) {
+        putEnemyOnPage(hitAPI.responseText)
+      } else {
+        throw new Error('There was a problem with the API call.');
       }
     }
   }
