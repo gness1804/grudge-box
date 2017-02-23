@@ -85,6 +85,7 @@ addEnemyButton.on('click', (e) => {
   }
   postNewEnemyToServer(name, offense, date)
   clearInputFields()
+  userErrorWarning.text('')
 })
 
 getEnemies()

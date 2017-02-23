@@ -1,6 +1,12 @@
 body {
   text-align: center;
   background: linear-gradient(to bottom, rgb(201, 35, 12), rgb(232, 135, 21));
+  font-family: 'Architects Daughter', cursive;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 600;
 }
 
 #john-candy-devil {
@@ -16,5 +22,16 @@ input {
 }
 
 #user-error-warning {
-  color: #F00;
+  color: rgb(138, 14, 1);
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.enemy-counts-display {
+  margin-bottom: 50px;
+}
+
+.enemy-counts-display p {
+  font-size: 20px;
 }
