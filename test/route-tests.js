@@ -33,3 +33,24 @@ describe('GET /', function () {
       });
   });
 });
+
+describe('enemies route', function () {
+  it('should be a valid path', function () {
+    request(app)
+      .get('/api/vi/enemies')
+      .end(function(error, result){
+        result.should.have.status(200);
+        done();
+      })
+  });
+
+  it('should return an array', function () {
+    request(app)
+      .get('/api/vi/enemies')
+      .end(function(error, result) {
+        result.should.be.a('array');
+        done();
+      });
+  });
+
+});
