@@ -12,10 +12,3 @@ const should = chai.should();
 const chaiHttp = require('chai-http');
 
 chai.use(chaiHttp)
-
-describe('Sanity check', () => {
-  it('testing should run', () => {
-
-    assert.strictEqual('dogs', 'cats');
-  });
-});
