@@ -9,6 +9,10 @@ const enemyCountsDisplay = $('.enemy-counts-display')
 const totalEnemiesCount = $('#total-enemies-count')
 const totalUnforgivenCount = $('#total-unforgiven-count')
 const totalForgivenCount = $('#total-forgiven-count')
+const sortEnemiesByNameButton = $('#enemy-sort-name-button')
+const sortEnemiesByDateButton = $('#enemy-sort-date-button')
+
+let enemiesStore = []
 
 const getEnemies = () => {
   const hitAPI = new XMLHttpRequest();
@@ -24,6 +28,32 @@ const getEnemies = () => {
       }
     }
   }
+}
+
+const sortEnemiesByName = () => {
+  clearEnemyList()
+  const sortedEnemies = enemiesStore.sort((a, b) => {
+    const first = a.name.toLowerCase()
+    const second = b.name.toLowerCase()
+    if (first < second) {
+      return -1
+    }
+    if (first > second) {
+      return 1
+    }
+    return 0
+  })
+  appendEnemiesToDOM(sortedEnemies)
+  addEnemiesToClientStore(sortedEnemies)
+}
+
+const sortEnemiesByDate = () => {
+  clearEnemyList()
+  const sortedEnemies = enemiesStore.sort((a, b) => {
+    return b.rawDateOfOffense - a.rawDateOfOffense
+  })
+  appendEnemiesToDOM(sortedEnemies)
+  addEnemiesToClientStore(sortedEnemies)
 }
 
 const postNewEnemyToServer = (name, offense, date) => {
@@ -44,7 +74,8 @@ const dataIsValid = (name, offense, date) => {
   }
 }
 
-addEnemyButton.on('click', () => {
+addEnemyButton.on('click', (e) => {
+  e.preventDefault()
   const name = enemyNameInput.val()
   const offense = enemyOffenseInput.val()
   const date = enemyDateInput.val()
@@ -58,6 +89,17 @@ addEnemyButton.on('click', () => {
 
 getEnemies()
 
-enemyListUpdateButton.on('click', () => {
+enemyListUpdateButton.on('click', (e) => {
+  e.preventDefault()
   getEnemies()
+});
+
+sortEnemiesByNameButton.on('click', (e) => {
+  e.preventDefault()
+  sortEnemiesByName()
+});
+
+sortEnemiesByDateButton.on('click', (e) => {
+  e.preventDefault()
+  sortEnemiesByDate()
 });

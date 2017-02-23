@@ -1,3 +1,21 @@
+const addEnemiesToClientStore = (enemies) => {
+  enemiesStore = enemies
+}
+
+const clearEnemyList = () => {
+  enemyListDisplay.html('')
+}
+
+const appendEnemiesToDOM = (enemies) => {
+  enemies.forEach((enemy) => {
+    enemyListDisplay.append(`
+      <div>
+        <h2 onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h2>
+      </div>
+      `)
+  });
+}
+
 const displayTotalEnemiesCount = (enemies) => {
   enemies.length ? totalEnemiesCount.text(`You have ${enemies.length} foes. What jerks!`) : totalEnemiesCount.text('You don\'t have any enemies! You should celebrate.')
 }
@@ -19,15 +37,10 @@ const displayCountOfForgiven = (enemies) => {
 }
 
 const putEnemiesOnPage = (enemies) => {
-  enemyListDisplay.html('')
-  enemies.forEach((enemy) => {
-    enemyListDisplay.append(`
-      <div>
-        <h2 onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h2>
-      </div>
-      `)
-  });
+  clearEnemyList()
+  appendEnemiesToDOM(enemies)
   displayTotalEnemiesCount(enemies)
   displayCountOfUnforgiven(enemies)
   displayCountOfForgiven(enemies)
+  addEnemiesToClientStore(enemies)
 }
