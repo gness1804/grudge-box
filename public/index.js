@@ -3,13 +3,14 @@ const enemyOffenseInput = $('#enemy-offense-input')
 const enemyDateInput = $('#enemy-date-input')
 const addEnemyButton = $('#add-enemy-button')
 const enemyListDisplay = $('.enemy-list-display')
+const enemyListUpdateButton = $('#enemy-list-update-button')
 
 const putEnemiesOnPage = (enemies) => {
   enemyListDisplay.html('')
   enemies.forEach((enemy) => {
     enemyListDisplay.append(`
       <div>
-        <h2>${enemy.name}</h2>
+        <h2 onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h2>
       </div>
       `)
   });
@@ -53,6 +54,11 @@ addEnemyButton.on('click', () => {
     date,
     forgiven: false,
   })
+  getEnemies()
 })
 
 getEnemies()
+
+enemyListUpdateButton.on('click', () => {
+  getEnemies()
+});

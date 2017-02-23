@@ -35,8 +35,8 @@ app.get('/api/vi/enemies', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log('The server is listening on port 3000.'); // eslint-disable-line
 });
-//
-// app.post('/api/vi/enemies', (request, response) => {
-//   const enemyInfo = request.body
-//   app.locals.enemies.push(enemyInfo)
-// });
+
+app.post('/api/vi/enemies', (request) => {
+  const enemyInfo = request.body
+  app.locals.enemies.push(enemyInfo)
+});
