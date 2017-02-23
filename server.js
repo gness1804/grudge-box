@@ -2,8 +2,8 @@ const express = require('express');
 
 const app = express();
 const bodyParser = require('body-parser');
-const path = require('path');
-const http = require('http');
+// const path = require('path');
+// const http = require('http');
 
 app.use(express.static('public'));
 
@@ -19,5 +19,5 @@ app.get('/', (request, response) => {
 });
 
 app.listen(app.get('port'), () => {
-    console.log('The server is listening on port 3000.');
+  console.log('The server is listening on port 3000.'); // eslint-disable-line
 });
