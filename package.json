@@ -30,6 +30,7 @@
     "node-libs-browser": "^1.0.0"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-eslint": "^6.1.2",
     "body-parser": "^1.16.1",
     "eslint": "^3.16.0",

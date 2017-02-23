@@ -12,3 +12,7 @@ input {
   display: block;
   margin: 20px auto;
 }
+
+#user-error-warning {
+  color: #F00;
+}

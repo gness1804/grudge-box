@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" style="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css"/>
     <link rel="stylesheet" style="text/css" href="styles.css"/>
     <title>Grudge Box</title>
@@ -16,6 +17,8 @@
       id="john-candy-devil"
     />
 
+    <p id="user-error-warning"></p>
+
     <section class="enemy-entry-section">
       <input
         placeholder="Enemy's Name"
@@ -27,16 +30,28 @@
         id="enemy-offense-input"
         type="text"
       />
-      <p>Is this enemy forgiven?</p>
-      <select id="enemy-forgiven-dropdown">
+      <!-- <p>Is this enemy forgiven?</p> -->
+      <!-- <select id="enemy-forgiven-dropdown">
         <option selected value="true">True</option>
         <option value="false">False</option>
-      </select>
+      </select> -->
       <p>When Did They Screw You Over?</p>
       <input
         id="enemy-date-input"
         type="date"
       />
+      <button
+      id="add-enemy-button"
+      type="submit"
+      >
+        Add The Rat!
+      </button>
+    </section>
+
+    <button id="enemy-list-update-button">Update Enemies List</button>
+
+    <section class="enemy-counts">
+
     </section>
 
     <section class="enemy-list-display">
@@ -48,5 +63,7 @@
     </section>
 
    <script src="index.js"></script>
+   <script src="./helpers/clear-input-fields.js"></script>
+   <script src="./helpers/put-enemies-on-page.js"></script>
   </body>
 </html>
