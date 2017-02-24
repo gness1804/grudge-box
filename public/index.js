@@ -49,7 +49,7 @@ const putEnemyOnPage = (data) => {
   enemyDetailSection.html('')
   enemyDetailSection.append(`
     <div>
-      <h2>Enemy:</h2>
+      <h2 class="enemy-headline">Enemy:</h2>
       <h3>Name: ${enemy.name}</h3>
       <p>Offense: ${enemy.offense}</p>
       <p>Is this enemy forgiven? Currently: ${enemy.forgiven}</p>
