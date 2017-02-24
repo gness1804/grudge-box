@@ -26,7 +26,18 @@ test.describe('App', function () {
     test.it('application should serve up three input fields on load', function () {
       const inputFields = driver.findElements({tagName: 'input'}).then(function(select) {
       assert.equal(select.length, 3)
+      })
     })
+
+    test.it('application should serve an error if user does not enter data into an input field', function () {
+      const submitButton = driver.findElement({id: 'add-enemy-button'});
+    submitButton.click();
+
+    driver.findElement({id: 'user-error-warning'}).then(function (button) {
+     return button.getText()
+      }).then(function (text) {
+     assert.strictEqual(text, 'Error: you must enter in valid data in all fields.');
+      })
     })
 
 })
