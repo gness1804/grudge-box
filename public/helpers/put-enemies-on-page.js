@@ -48,4 +48,5 @@ const putEnemiesOnPage = (enemies) => {
 
 Object.assign(exports, {
   displayCountOfForgiven,
+  clearEnemyList,
 })

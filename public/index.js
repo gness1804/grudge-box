@@ -165,3 +165,8 @@ sortEnemiesByDateButton.on('click', (e) => {
   e.preventDefault()
   sortEnemiesByDate()
 });
+
+Object.assign(exports,
+  {
+    enemyListDisplay,
+  })
