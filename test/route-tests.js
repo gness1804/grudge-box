@@ -62,6 +62,24 @@ describe('enemies route', function () {
       });
   });
 
+  it('allow user to post a new enemy', function () {
+    request(app)
+      .post('/api/vi/enemies')
+      .send({
+        id: Date.now(),
+        name: 'Darth Vader',
+        offense: 'Trying to turn his son to the Dark Side',
+        date: '12/31/77',
+        forgiven: false,
+      })
+      .end(function (error, result) {
+        result.should.have.status(200);
+        result.should.be.json;
+        assert.strictEqual(result.length, 2);
+        done();
+      })
+  });
+
 });
 
 describe('enemy id route', function () {
