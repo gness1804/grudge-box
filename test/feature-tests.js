@@ -75,4 +75,29 @@ test.describe('App', function () {
 
   })
 
+  test.it('sort function should work', function () {
+    const nameField = driver.findElement({id: 'enemy-name-input'});
+    const offenseField = driver.findElement({id: 'enemy-offense-input'});
+    const dateField = driver.findElement({id: 'enemy-date-input'});
+    nameField.sendKeys('Big bad dude')
+    offenseField.sendKeys('He made me sad')
+    dateField.sendKeys('12/26/2016')
+
+    const submitButton = driver.findElement({id: 'add-enemy-button'});
+    submitButton.click();
+
+    const updateButton = driver.findElement({id: 'enemy-list-update-button'});
+    updateButton.click();
+
+    const sortByNameButton = driver.findElement({id: 'enemy-sort-name-button'});
+    sortByNameButton.click()
+
+    driver.findElement({className: 'enemy-name'}).then(function (enemy) {
+     return enemy.getText()
+   }).then(function (text) {
+     assert.strictEqual(text, 'Big bad dude');
+    })
+
+  })
+
 })
