@@ -10,8 +10,10 @@ const appendEnemiesToDOM = (enemies) => {
   enemyListDisplay.append('<h2>Enemies:</h2>')
   enemies.forEach((enemy) => {
     enemyListDisplay.append(`
-      <div>
-        <h3 onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h3>
+      <div class="enemy">
+        <h3
+        class="enemy-name"
+        onClick="goToEnemyDetail('${enemy.id}')">${enemy.name}</h3>
       </div>
       `)
   });
@@ -45,3 +47,8 @@ const putEnemiesOnPage = (enemies) => {
   displayCountOfForgiven(enemies)
   addEnemiesToClientStore(enemies)
 }
+
+Object.assign(exports, {
+  displayCountOfForgiven,
+  clearEnemyList,
+})
