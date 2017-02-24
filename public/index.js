@@ -32,17 +32,6 @@ const getEnemies = () => {
   }
 }
 
-const showOnlyOneEnemy = () => {
-  enemyListDisplay.hide()
-  enemyDetailSection.show()
-}
-
-const showEnemies = () => {
-  enemyListDisplay.show()
-  enemyDetailSection.hide()
-  getEnemies()
-}
-
 const putEnemyOnPage = (data) => {
   const enemy = data[0]
   showOnlyOneEnemy()
