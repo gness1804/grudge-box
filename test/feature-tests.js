@@ -48,14 +48,31 @@ test.describe('App', function () {
 
     test.it('application should render the right enemy by default', function () {
 
-      // const enemy = driver.findElement({className: 'enemy-name'});
-
     driver.findElement({className: 'enemy-name'}).then(function (enemy) {
      return enemy.getText()
    }).then(function (text) {
      assert.strictEqual(text, 'The Grinch');
-})
-
     })
+  })
+
+  test.it('application should render two enemies when user enters an additional enemy', function () {
+    const nameField = driver.findElement({id: 'enemy-name-input'});
+    const offenseField = driver.findElement({id: 'enemy-offense-input'});
+    const dateField = driver.findElement({id: 'enemy-date-input'});
+    nameField.sendKeys('Big bad dude')
+    offenseField.sendKeys('He made me sad')
+    dateField.sendKeys('12/25/2016')
+
+    const submitButton = driver.findElement({id: 'add-enemy-button'});
+    submitButton.click();
+
+    const updateButton = driver.findElement({id: 'enemy-list-update-button'});
+    updateButton.click();
+
+    const enemy = driver.findElements({className: 'enemy'}).then(function(enemy) {
+    assert.equal(enemy.length, 2)
+    })
+
+  })
 
 })
