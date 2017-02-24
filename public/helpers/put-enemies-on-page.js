@@ -7,7 +7,7 @@ const clearEnemyList = () => {
 }
 
 const appendEnemiesToDOM = (enemies) => {
-  enemyListDisplay.append('<h2>Enemies:</h2>')
+  enemyListDisplay.append('<h2 class="enemy-headline">Enemies:</h2>')
   enemies.forEach((enemy) => {
     enemyListDisplay.append(`
       <div class="enemy">
