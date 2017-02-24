@@ -40,4 +40,22 @@ test.describe('App', function () {
       })
     })
 
+    test.it('application should render one enemy by default', function () {
+      const enemy = driver.findElements({className: 'enemy'}).then(function(enemy) {
+      assert.equal(enemy.length, 1)
+      })
+    })
+
+    test.it('application should render the right enemy by default', function () {
+
+      // const enemy = driver.findElement({className: 'enemy-name'});
+
+    driver.findElement({className: 'enemy-name'}).then(function (enemy) {
+     return enemy.getText()
+   }).then(function (text) {
+     assert.strictEqual(text, 'The Grinch');
+})
+
+    })
+
 })
