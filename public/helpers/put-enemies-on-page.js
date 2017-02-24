@@ -45,3 +45,7 @@ const putEnemiesOnPage = (enemies) => {
   displayCountOfForgiven(enemies)
   addEnemiesToClientStore(enemies)
 }
+
+Object.assign(exports, {
+  displayCountOfForgiven,
+})
