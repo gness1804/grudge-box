@@ -20,6 +20,13 @@ test.describe('App', function () {
         return title.getText()
       }).then(function (text) {
         assert.strictEqual(text, 'Grudge Box');
-  })
+      })
     })
+
+    test.it('application should serve up three input fields on load', function () {
+      const inputFields = driver.findElements({tagName: 'input'}).then(function(select) {
+      assert.equal(select.length, 3)
+    })
+    })
+
 })
