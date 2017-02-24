@@ -92,4 +92,18 @@ describe('enemy id route', function () {
         done();
       });
   });
+
+  it('should allow the user to path a new forgivness status to an enemy', function () {
+    request(app)
+      .patch('/api/vi/enemies/372921')
+      .send({
+        forgiven: true,
+      })
+      .end(function(error, result) {
+        result.should.have.status(200);
+        result.should.be.json;
+        result.should.be.a('array')
+        done();
+      });
+  });
 });
