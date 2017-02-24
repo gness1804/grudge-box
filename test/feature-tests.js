@@ -55,7 +55,30 @@ test.describe('App', function () {
     })
   })
 
-  test.it('application should render two enemies when user enters an additional enemy', function () {
+  test.it('User should be notified that the proper number of enemies are in the program', function () {
+
+    const nameField = driver.findElement({id: 'enemy-name-input'});
+    const offenseField = driver.findElement({id: 'enemy-offense-input'});
+    const dateField = driver.findElement({id: 'enemy-date-input'});
+    nameField.sendKeys('Big bad dude')
+    offenseField.sendKeys('He made me sad')
+    dateField.sendKeys('12/26/2016')
+
+    const submitButton = driver.findElement({id: 'add-enemy-button'});
+    submitButton.click();
+
+    const updateButton = driver.findElement({id: 'enemy-list-update-button'});
+    updateButton.click();
+
+    driver.findElement({id: 'total-enemies-count'}).then(function (count) {
+     return count.getText()
+   }).then(function (text) {
+     assert.strictEqual(text, 'You have 2 foes. What jerks!');
+    })
+
+  })
+
+  test.it('application should render new enemies when user enters new enemies', function () {
     const nameField = driver.findElement({id: 'enemy-name-input'});
     const offenseField = driver.findElement({id: 'enemy-offense-input'});
     const dateField = driver.findElement({id: 'enemy-date-input'});
@@ -70,7 +93,7 @@ test.describe('App', function () {
     updateButton.click();
 
     const enemy = driver.findElements({className: 'enemy'}).then(function(enemy) {
-    assert.equal(enemy.length, 2)
+    assert.equal(enemy.length, 3)
     })
 
   })
